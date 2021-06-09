@@ -4,6 +4,7 @@ import { ToastController } from '@ionic/angular';
 import { Observable } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { IListaFilmes } from '../models/IListaFilmes.model';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,8 @@ export class FilmeService {
   lingua = 'pt-BR';
   regiao = 'BR';
 
-  private apiURL = 'https://api.themoviedb.org/3/';
-  private key = '?api_key=5782a4f688802c4c28d4fd42c8cc36b5'
+  private apiURL = environment.filmesApiURL;
+  private key = `?api_key=${environment.filmesApiKey}`
 
   constructor(private http: HttpClient, public toastController: ToastController) { }
 
